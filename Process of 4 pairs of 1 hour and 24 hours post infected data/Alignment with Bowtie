@@ -1,0 +1,9 @@
+# All the code was run in terminal 
+# Building genome index
+-bowtie2-build contigs.fasta Bowtie
+
+# Running Bowtie
+-bowtie2 -x Bowtie –very-sensitive -1 SRX264528_1.fastq.gz -2 SRX264528_2.fastq.gz -s SRX264528.sam
+-bowtie2 -x Bowtie –very-sensitive -1 SRX264529_1.fastq.gz -2 SRX264529_2.fastq.gz -s SRX264529.sam
+-bowtie2 -x Bowtie –very-sensitive -1 SRX272056_1.fastq.gz -2 SRX272056_2.fastq.gz -s SRX272056.sam
+-bowtie2 -x Bowtie –very-sensitive -1 SRX272057_1.fastq.gz -2 SRX272057_2.fastq.gz -s SRX272057.sam
