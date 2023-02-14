@@ -1,0 +1,10 @@
+prokka --outdir prokka \
+       --kingdom Bacteria \
+       --genus Chlamydiatrachomatis \
+       --prefix prokka1 \
+       --usegenus \
+       --force \
+       --mincontiglen 500 \
+       --cpus 2 \
+       --locustag PROKKA \
+       ~/practical_1/data/assembly/editcontigs.fasta
