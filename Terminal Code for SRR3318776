@@ -12,3 +12,6 @@ Genome sequence used is SRR3318776.fastq (https://www.ncbi.nlm.nih.gov/sra/SRX16
 
 # Evalutaion of genome assembly quality with QUAST
 -quast.py -r FN652779.fa spades_out/contigs.fasta
+
+# Annotation
+- 
