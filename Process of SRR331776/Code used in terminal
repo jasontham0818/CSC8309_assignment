@@ -1,0 +1,17 @@
+Genome sequence used is SRR3318776.fastq (https://www.ncbi.nlm.nih.gov/sra/SRX1672495)
+
+# Quality control 
+-fastqc SRR3318776.fastq
+
+# Genome assembly with SPAdes
+-spades.py -1 SRR3318776_1_sample.fastq.gz -2 SRR3318776_2_sample.fastq.gz -k 111 --careful --cov-cutoff auto 
+
+# Evalutaion of genome assembly quality with gnx 
+# spade_out is replaced with the spade output directory
+-gnx -min 100 -nx 25,50,75 spades_out/contigs.fasta
+
+# Evalutaion of genome assembly quality with QUAST
+-quast.py -r FN652779.fa spades_out/contigs.fasta
+
+# Annotation
+- 
