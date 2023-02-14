@@ -1,2 +1,2 @@
 # CSC8309_assignment
-Code ran in terminal for every steps 
+Code used in terminal for every steps and analysis in R studio 
