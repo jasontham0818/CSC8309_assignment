@@ -3,19 +3,19 @@
 -bowtie2-build contigs.fasta Bowtie
 
 # Running Bowtie
--bowtie2 -x Bowtie –very-sensitive -1 SRX264528_1.fastq.gz -2 SRX264528_2.fastq.gz -s SRX264528.sam
--bowtie2 -x Bowtie –very-sensitive -1 SRX264529_1.fastq.gz -2 SRX264529_2.fastq.gz -s SRX264529.sam
+-bowtie2 -x Bowtie –very-sensitive -1 SRX2654528_1.fastq.gz -2 SRX2654528_2.fastq.gz -s SRX2654528.sam
+-bowtie2 -x Bowtie –very-sensitive -1 SRX2654529_1.fastq.gz -2 SRX2654529_2.fastq.gz -s SRX2654529.sam
 -bowtie2 -x Bowtie –very-sensitive -1 SRX272056_1.fastq.gz -2 SRX272056_2.fastq.gz -s SRX272056.sam
 -bowtie2 -x Bowtie –very-sensitive -1 SRX272057_1.fastq.gz -2 SRX272057_2.fastq.gz -s SRX272057.sam
 
 # Conversion of SAM format to BAM format 
--samtools view -bo SRX264528.bam SRX264528.sam
--samtools view -bo SRX264529.bam SRX264529.sam
+-samtools view -bo SRX2654528.bam SRX2654528.sam
+-samtools view -bo SRX2654529.bam SRX2654529.sam
 -samtools view -bo SRX272056.bam SRX272056.sam
 -samtools view -bo SRX272057.bam SRX272057.sam
 
 # summary of alignment statistics
--samtools flagstat SRX264528.bam
--samtools flagstat SRX264529.bam
+-samtools flagstat SRX2654528.bam
+-samtools flagstat SRX2654529.bam
 -samtools flagstat SRX272056.bam
 -samtools flagstat SRX272057.bam
