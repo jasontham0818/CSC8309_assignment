@@ -1,0 +1,5 @@
+# Code used in terminal for quantification 
+-htseq-count -f bam -a 0 -s no -r name -t CDS ./BamResult/SRX2654528.bam ./htseq/ct.gtf > htseq.output
+-htseq-count -f bam -a 0 -s no -r name -t CDS ./BamResult/SRX2654529.bam ./htseq/ct.gtf > htseq2.output
+-htseq-count -f bam -a 0 -s no -r name -t CDS ./BamResult/SRX272056.bam ./htseq/ct.gtf > htseq3.output
+-htseq-count -f bam -a 0 -s no -r name -t CDS ./BamResult/SRX272057.bam ./htseq/ct.gtf > htseq4.output
