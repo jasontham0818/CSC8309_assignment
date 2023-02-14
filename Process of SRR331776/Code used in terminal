@@ -13,5 +13,7 @@ Genome sequence used is SRR3318776.fastq (https://www.ncbi.nlm.nih.gov/sra/SRX16
 # Evalutaion of genome assembly quality with QUAST
 -quast.py -r FN652779.fa spades_out/contigs.fasta
 
-# Annotation
-- 
+# Annotation using Prokka
+# The last arguement need to change to the location of edited version of contigs.fasta
+- prokka --outdir prokka --kingdom Bacteria --genus Chlamydiatrachomatis --prefix prokka1 --usegenus --force 
+--mincontiglen 500 --cpus 2 --locustag PROKKA /home/student/practical_1/data/assembly/editcontigs.fasta
