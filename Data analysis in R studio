@@ -1,1 +1,79 @@
+# installation of BiocManager package
+# install.packages('BiocManager')
+
+library(BiocManager)
+install()
+# installation of DESeq2
+install("DESeq2")
+# load DESeq package
+library(DESeq2)
+
+# loading of count_table
+load(file = "~/Downloads/sim_counts_22.RData")
+
+# is.numeric(count_table)
+# is.matrix(count_table)
+
+pheno <- data.frame(tp = c("T1", "T1", "T1", "T24", "T24", "T24"))
+deseq_dataset <- DESeqDataSetFromMatrix(countData = count_table , 
+                                        colData = pheno , design = ~tp)
+
+# deseq_dataset <- DESeq(deseq_dataset) # this will do all the three steps below
+# Normalisation 
+deseq_dataset <- estimateSizeFactors(deseq_dataset)
+# calculating of size factors 
+sizeFactors(deseq_dataset)
+
+# normalisation of the dataset 
+counts(deseq_dataset , normalized = TRUE)
+
+# Dispersion estimation 
+deseq_dataset <- estimateDispersions(deseq_dataset)
+
+# Testing for differential expression 
+deseq_dataset <- nbinomWaldTest(deseq_dataset)  # control false discovery 
+
+# Final result of DESeq2 generated from previous 
+# DESeq2::results(deseq_dataset)
+
+# greater if >1 in comparison of T24 to T1
+results_table <- results(deseq_dataset , contrast = c("tp", "T24", "T1"))
+
+# summary of the result 
+# summary(results_table)
+
+# sort the order with Padj value 
+results_table <- results_table[order(results_table$padj),]
+
+# MA plot 
+plotMA(deseq_dataset , alpha = 0.01) # grey = not significant, Blue = significant 
+plotDispEsts(deseq_dataset) # important to reduce false positive 
+
+# Data transformation 
+rlog_data <- rlogTransformation(deseq_dataset , blind = TRUE)
+
+install("gplots") # installation of gplots 
+library(gplots)
+
+# Heatmap with gplots
+dist_rl = dist(t(assay(rlog_data)))
+dist_mat = as.matrix(dist_rl)
+heatmap.2(dist_mat , trace = "none")
+
+# PCA plot 
+plotPCA(rlog_data , intgroup = "tp")
+
+# Load annotation map
+load((file = "~/Downloads/annotation_map_22.RData"))
+
+# merge the results to annotation map
+results_df <- cbind(gene_id=rownames(results_table), as.data.frame(results_table))
+annot_results <- merge(results_df, annotation_mapping, by.x='gene_id', by.y='PROKKA_ID')
+
+# Filtering the results 
+results_table$padj < 0.05 & abs(results_table$log2FoldChange) > 1
+
+
+
+
 
